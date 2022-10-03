@@ -108,6 +108,10 @@ namespace RoboRun.ViewModel
                     {
                         X = i,
                         Y = j,
+                        HasWall = _model.GameTable.HasWall(i, j),
+                        HasCollapsedWall = _model.GameTable.HasWall(i, j) ? _model.GameTable.GetWall(i, j).Collapsed : false,
+                        IsRobot = _model.GameTable.IsRobot(i, j),
+                        IsHome = _model.GameTable.IsHome(i, j),
                         StepCommand = new DelegateCommand(param => StepGame(int.Parse((string)param)))
                     });
                 }

@@ -38,7 +38,9 @@ namespace RoboRun.View
         private void App_Startup(object? sender, StartupEventArgs e)
         {
             _model = new RoboRunModel(new RoboRunFileDataAccess());
-            _model.GameWin += new EventHandler<RoboRunEventArgs>(Model_GameWin);            
+            _model.GameWin += new EventHandler<RoboRunEventArgs>(Model_GameWin);
+            // TODO: randomize starting
+            _model.NewGame(0, 0, Direction.Up);
 
             _viewModel = new RoboRunViewModel(_model);
             _viewModel.NewGame += new EventHandler(ViewModel_NewGame);
