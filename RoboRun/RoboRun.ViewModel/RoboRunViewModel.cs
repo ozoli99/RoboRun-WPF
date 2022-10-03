@@ -15,6 +15,11 @@ namespace RoboRun.ViewModel
 
         #region Properties
 
+        public DelegateCommand NewGameCommand { get; private set; }
+        public DelegateCommand LoadGameCommand { get; private set; }
+        public DelegateCommand SaveGameCommand { get; private set; }
+        public DelegateCommand ExitGameCommand { get; private set; }
+
         #endregion
 
         #region Events
