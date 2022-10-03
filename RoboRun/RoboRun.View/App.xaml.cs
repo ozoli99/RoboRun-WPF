@@ -82,5 +82,14 @@ namespace RoboRun.View
         }
 
         #endregion
+
+        #region Model event handlers
+
+        private void Model_GameWin(object? sender, RoboRunEventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 }
