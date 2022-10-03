@@ -2,6 +2,7 @@
 using RoboRun.Persistence;
 using RoboRun.ViewModel;
 using System;
+using System.ComponentModel;
 using System.Windows;
 
 namespace RoboRun.View
@@ -43,8 +44,17 @@ namespace RoboRun.View
 
             _view = new MainWindow();
             _view.DataContext = _viewModel;
-            _view.Closing += new System.ComponentModel.CancelEventHandler(View_Closing);
+            _view.Closing += new CancelEventHandler(View_Closing);
             _view.Show();
+        }
+
+        #endregion
+
+        #region View event handlers
+
+        private void View_Closing(object? sender, CancelEventArgs e)
+        {
+
         }
 
         #endregion
