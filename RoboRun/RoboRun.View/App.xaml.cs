@@ -58,5 +58,29 @@ namespace RoboRun.View
         }
 
         #endregion
+
+        #region ViewModel event handlers
+
+        private void ViewModel_NewGame(object? sender, EventArgs e)
+        {
+
+        }
+
+        private void ViewModel_LoadGame(object? sender, EventArgs e)
+        {
+
+        }
+
+        private void ViewModel_SaveGame(object? sender, EventArgs e)
+        {
+
+        }
+
+        private void ViewModel_ExitGame(object? sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 }
