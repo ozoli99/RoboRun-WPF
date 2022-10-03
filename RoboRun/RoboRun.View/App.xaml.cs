@@ -1,4 +1,5 @@
-﻿using RoboRun.Model;
+﻿using Microsoft.Win32;
+using RoboRun.Model;
 using RoboRun.Persistence;
 using RoboRun.ViewModel;
 using System;
@@ -63,12 +64,12 @@ namespace RoboRun.View
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
-
+            _model.AdvanceTime();
         }
 
         private void RobotTimer_Tick(object? sender, EventArgs e)
         {
-
+            _model.MoveRobot();
         }
 
         #endregion
@@ -77,7 +78,21 @@ namespace RoboRun.View
 
         private void View_Closing(object? sender, CancelEventArgs e)
         {
+            bool restartTimers = _timer.IsEnabled;
 
+            _timer.Stop();
+            _robotTimer.Stop();
+
+            if (MessageBox.Show("Are you sure you want to quit?", "RoboRun", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+            {
+                e.Cancel = true;
+
+                if (restartTimers)
+                {
+                    _timer.Start();
+                    _robotTimer.Start();
+                }
+            }
         }
 
         #endregion
@@ -86,12 +101,42 @@ namespace RoboRun.View
 
         private void ViewModel_NewGame(object? sender, EventArgs e)
         {
+            _timer.Stop();
+            _robotTimer.Stop();
 
+            //_model.NewGame();
         }
 
-        private void ViewModel_LoadGame(object? sender, EventArgs e)
+        private async void ViewModel_LoadGame(object? sender, EventArgs e)
         {
+            bool restartTimers = _timer.IsEnabled;
 
+            _timer.Stop();
+            _robotTimer.Stop();
+
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Title = "Loading RoboRun table";
+                openFileDialog.Filter = "RoboRun table (*.rrt)|*.rrt";
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    await _model.LoadGameAsync(openFileDialog.FileName);
+
+                    _timer.Start();
+                    _robotTimer.Start();
+                }
+            }
+            catch (RoboRunDataException)
+            {
+                MessageBox.Show("Error occurred during load!" + Environment.NewLine + "Wrong path or file format.", "RoboRun Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            if (restartTimers)
+            {
+                _timer.Start();
+                _robotTimer.Start();
+            }
         }
 
         private void ViewModel_SaveGame(object? sender, EventArgs e)
