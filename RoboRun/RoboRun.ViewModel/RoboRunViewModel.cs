@@ -88,6 +88,11 @@ namespace RoboRun.ViewModel
             _model.GameTimePaused += new EventHandler<RoboRunEventArgs>(Model_GameTimePaused);
             _model.GameWin += new EventHandler<RoboRunEventArgs>(Model_GameWin);
             _model.RobotMoved += new EventHandler(Model_RobotMoved);
+
+            NewGameCommand = new DelegateCommand(param => OnNewGame());
+            LoadGameCommand = new DelegateCommand(param => OnLoadGame());
+            SaveGameCommand = new DelegateCommand(param => OnSaveGame());
+            ExitGameCommand = new DelegateCommand(param => OnExitGame());
         }
 
         #endregion
@@ -112,6 +117,30 @@ namespace RoboRun.ViewModel
         private void Model_RobotMoved(object? sender, EventArgs e)
         {
 
+        }
+
+        #endregion
+
+        #region Event methods
+
+        private void OnNewGame()
+        {
+            NewGame?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnLoadGame()
+        {
+            LoadGame?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnSaveGame()
+        {
+            SaveGame?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnExitGame()
+        {
+            ExitGame?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion
