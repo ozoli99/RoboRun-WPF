@@ -20,6 +20,8 @@
 
         public bool IsHome { get; set; }
 
+        public bool IsFloor { get; set; }
+
         public DelegateCommand StepCommand { get; set; }
 
         #endregion

@@ -27,7 +27,7 @@
         <ItemsControl Grid.Row="1" ItemsSource="{Binding Fields}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Rows="11" Columns="11" />
+                    <UniformGrid Rows="{Binding GameTableSize}" Columns="{Binding GameTableSize}" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
@@ -36,11 +36,20 @@
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsLocked}" Value="True">
+                                    <DataTrigger Binding="{Binding IsRobot}" Value="True">
+                                        <Setter Property="Background" Value="Black" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsFloor}" Value="True">
+                                        <Setter Property="Background" Value="White" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsHome}" Value="True">
+                                        <Setter Property="Background" Value="Green" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding HasWall}" Value="True">
                                         <Setter Property="Background" Value="Yellow"/>
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding IsLocked}" Value="False">
-                                        <Setter Property="Background" Value="White"/>
+                                    <DataTrigger Binding="{Binding HasCollapsedWall}" Value="True">
+                                        <Setter Property="Background" Value="Gray"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>

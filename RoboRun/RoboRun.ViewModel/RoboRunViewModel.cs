@@ -26,6 +26,8 @@ namespace RoboRun.ViewModel
 
         public ObservableCollection<RoboRunTableField> Fields { get; set; }
 
+        public int GameTableSize { get { return _model.GameTable.Size; } }
+
         public string GameTime { get { return TimeSpan.FromSeconds(_model.GameTime).ToString("g"); } }
 
         public bool IsGameSmall
@@ -112,6 +114,7 @@ namespace RoboRun.ViewModel
                         HasCollapsedWall = _model.GameTable.HasWall(i, j) ? _model.GameTable.GetWall(i, j).Collapsed : false,
                         IsRobot = _model.GameTable.IsRobot(i, j),
                         IsHome = _model.GameTable.IsHome(i, j),
+                        IsFloor = !_model.GameTable.IsRobot(i, j) && !_model.GameTable.HasWall(i, j) && !_model.GameTable.IsHome(i, j),
                         StepCommand = new DelegateCommand(param => StepGame(int.Parse((string)param)))
                     });
                 }
