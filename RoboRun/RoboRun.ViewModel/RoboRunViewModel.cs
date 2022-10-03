@@ -16,9 +16,57 @@ namespace RoboRun.ViewModel
         #region Properties
 
         public DelegateCommand NewGameCommand { get; private set; }
+
         public DelegateCommand LoadGameCommand { get; private set; }
+
         public DelegateCommand SaveGameCommand { get; private set; }
+
         public DelegateCommand ExitGameCommand { get; private set; }
+
+        public bool IsGameSmall
+        {
+            get { return _model.GameTableSize == GameTableSize.Small; }
+            set
+            {
+                if (_model.GameTableSize == GameTableSize.Small)
+                    return;
+
+                _model.GameTableSize = GameTableSize.Small;
+                OnPropertyChanged("IsGameSmall");
+                OnPropertyChanged("IsGameMedium");
+                OnPropertyChanged("IsGameBig");
+            }
+        }
+
+        public bool IsGameMedium
+        {
+            get { return _model.GameTableSize == GameTableSize.Medium; }
+            set
+            {
+                if (_model.GameTableSize == GameTableSize.Medium)
+                    return;
+
+                _model.GameTableSize = GameTableSize.Medium;
+                OnPropertyChanged("IsGameSmall");
+                OnPropertyChanged("IsGameMedium");
+                OnPropertyChanged("IsGameBig");
+            }
+        }
+
+        public bool IsGameBig
+        {
+            get { return _model.GameTableSize == GameTableSize.Big; }
+            set
+            {
+                if (_model.GameTableSize == GameTableSize.Big)
+                    return;
+
+                _model.GameTableSize = GameTableSize.Big;
+                OnPropertyChanged("IsGameSmall");
+                OnPropertyChanged("IsGameMedium");
+                OnPropertyChanged("IsGameBig");
+            }
+        }
 
         #endregion
 
