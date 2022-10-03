@@ -173,7 +173,7 @@ namespace RoboRun.View
 
         private void ViewModel_ExitGame(object? sender, EventArgs e)
         {
-
+            _view.Close();
         }
 
         #endregion
