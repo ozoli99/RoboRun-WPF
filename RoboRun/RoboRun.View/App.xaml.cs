@@ -4,6 +4,7 @@ using RoboRun.ViewModel;
 using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace RoboRun.View
 {
@@ -17,6 +18,8 @@ namespace RoboRun.View
         private RoboRunModel _model;
         private RoboRunViewModel _viewModel;
         private MainWindow _view;
+        private DispatcherTimer _timer;
+        private DispatcherTimer _robotTimer;
 
         #endregion
 
@@ -46,6 +49,26 @@ namespace RoboRun.View
             _view.DataContext = _viewModel;
             _view.Closing += new CancelEventHandler(View_Closing);
             _view.Show();
+
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromMilliseconds(1000);
+            _timer.Tick += new EventHandler(Timer_Tick);
+            _robotTimer = new DispatcherTimer();
+            _robotTimer.Interval = TimeSpan.FromMilliseconds(150);
+            _robotTimer.Tick += new EventHandler(RobotTimer_Tick);
+
+            _timer.Start();
+            _robotTimer.Start();
+        }
+
+        private void Timer_Tick(object? sender, EventArgs e)
+        {
+
+        }
+
+        private void RobotTimer_Tick(object? sender, EventArgs e)
+        {
+
         }
 
         #endregion
