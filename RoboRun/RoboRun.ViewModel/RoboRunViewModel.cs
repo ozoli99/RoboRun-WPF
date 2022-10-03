@@ -19,6 +19,11 @@ namespace RoboRun.ViewModel
 
         #region Events
 
+        public event EventHandler NewGame;
+        public event EventHandler LoadGame;
+        public event EventHandler SaveGame;
+        public event EventHandler ExitGame;
+
         #endregion
 
         #region Constructor
