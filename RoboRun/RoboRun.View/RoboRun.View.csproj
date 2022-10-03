@@ -7,4 +7,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\RoboRun\RoboRun\RoboRun.Model\RoboRun.Model.csproj" />
+    <ProjectReference Include="..\RoboRun.ViewModel\RoboRun.ViewModel.csproj" />
+  </ItemGroup>
+
 </Project>

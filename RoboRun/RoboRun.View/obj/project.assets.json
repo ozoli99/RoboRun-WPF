@@ -1,11 +1,67 @@
 {
   "version": 3,
   "targets": {
-    "net6.0-windows7.0": {}
+    "net6.0-windows7.0": {
+      "RoboRun.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "RoboRun.Persistence": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RoboRun.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RoboRun.Model.dll": {}
+        }
+      },
+      "RoboRun.Persistence/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/RoboRun.Persistence.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RoboRun.Persistence.dll": {}
+        }
+      },
+      "RoboRun.ViewModel/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "RoboRun.Model": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RoboRun.ViewModel.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RoboRun.ViewModel.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "RoboRun.Model/1.0.0": {
+      "type": "project",
+      "path": "../../../RoboRun/RoboRun/RoboRun.Model/RoboRun.Model.csproj",
+      "msbuildProject": "../../../RoboRun/RoboRun/RoboRun.Model/RoboRun.Model.csproj"
+    },
+    "RoboRun.Persistence/1.0.0": {
+      "type": "project",
+      "path": "../../../RoboRun/RoboRun/RoboRun.Persistence/RoboRun.Persistence.csproj",
+      "msbuildProject": "../../../RoboRun/RoboRun/RoboRun.Persistence/RoboRun.Persistence.csproj"
+    },
+    "RoboRun.ViewModel/1.0.0": {
+      "type": "project",
+      "path": "../RoboRun.ViewModel/RoboRun.ViewModel.csproj",
+      "msbuildProject": "../RoboRun.ViewModel/RoboRun.ViewModel.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0-windows7.0": []
+    "net6.0-windows7.0": [
+      "RoboRun.Model >= 1.0.0",
+      "RoboRun.ViewModel >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Zoli\\.nuget\\packages\\": {},
@@ -40,7 +96,14 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\ELTE\\V. Felev\\Esemenyvezerelt alkalmazasok\\Beadandok\\RoboRun-WPF\\RoboRun\\RoboRun.ViewModel\\RoboRun.ViewModel.csproj": {
+              "projectPath": "E:\\ELTE\\V. Felev\\Esemenyvezerelt alkalmazasok\\Beadandok\\RoboRun-WPF\\RoboRun\\RoboRun.ViewModel\\RoboRun.ViewModel.csproj"
+            },
+            "E:\\ELTE\\V. Felev\\Esemenyvezerelt alkalmazasok\\Beadandok\\RoboRun\\RoboRun\\RoboRun.Model\\RoboRun.Model.csproj": {
+              "projectPath": "E:\\ELTE\\V. Felev\\Esemenyvezerelt alkalmazasok\\Beadandok\\RoboRun\\RoboRun\\RoboRun.Model\\RoboRun.Model.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
