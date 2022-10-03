@@ -1,4 +1,5 @@
 ﻿using RoboRun.Model;
+using System.Collections.ObjectModel;
 
 namespace RoboRun.ViewModel
 {
@@ -22,6 +23,10 @@ namespace RoboRun.ViewModel
         public DelegateCommand SaveGameCommand { get; private set; }
 
         public DelegateCommand ExitGameCommand { get; private set; }
+
+        public ObservableCollection<RoboRunTableField> Fields { get; set; }
+
+        public string GameTime { get { return TimeSpan.FromSeconds(_model.GameTime).ToString("g"); } }
 
         public bool IsGameSmall
         {
@@ -93,6 +98,20 @@ namespace RoboRun.ViewModel
             LoadGameCommand = new DelegateCommand(param => OnLoadGame());
             SaveGameCommand = new DelegateCommand(param => OnSaveGame());
             ExitGameCommand = new DelegateCommand(param => OnExitGame());
+
+            Fields = new ObservableCollection<RoboRunTableField>();
+            for (int i = 0; i < _model.GameTable.Size; i++)
+            {
+                for (int j = 0; j < _model.GameTable.Size; j++)
+                {
+                    Fields.Add(new RoboRunTableField
+                    {
+                        X = i,
+                        Y = j,
+                        StepCommand = new DelegateCommand(param => StepGame(int.Parse((string)param)))
+                    });
+                }
+            }
         }
 
         #endregion
@@ -101,7 +120,7 @@ namespace RoboRun.ViewModel
 
         private void Model_GameTimeAdvanced(object? sender, RoboRunEventArgs e)
         {
-
+            OnPropertyChanged("GameTime");
         }
 
         private void Model_GameTimePaused(object? sender, RoboRunEventArgs e)
@@ -117,6 +136,17 @@ namespace RoboRun.ViewModel
         private void Model_RobotMoved(object? sender, EventArgs e)
         {
 
+        }
+
+        #endregion
+
+        #region Private methods
+
+        private void StepGame(int index)
+        {
+            RoboRunTableField field = Fields[index];
+
+            _model.Step(field.X, field.Y);
         }
 
         #endregion
