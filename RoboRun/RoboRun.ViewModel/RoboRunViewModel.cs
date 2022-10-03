@@ -32,13 +32,13 @@ namespace RoboRun.ViewModel
 
         public bool IsGameSmall
         {
-            get { return _model.GameTableSize == GameTableSize.Small; }
+            get { return _model.GameTableSize == RoboRun.Model.GameTableSize.Small; }
             set
             {
-                if (_model.GameTableSize == GameTableSize.Small)
+                if (_model.GameTableSize == RoboRun.Model.GameTableSize.Small)
                     return;
 
-                _model.GameTableSize = GameTableSize.Small;
+                _model.GameTableSize = RoboRun.Model.GameTableSize.Small;
                 OnPropertyChanged("IsGameSmall");
                 OnPropertyChanged("IsGameMedium");
                 OnPropertyChanged("IsGameBig");
@@ -47,13 +47,13 @@ namespace RoboRun.ViewModel
 
         public bool IsGameMedium
         {
-            get { return _model.GameTableSize == GameTableSize.Medium; }
+            get { return _model.GameTableSize == RoboRun.Model.GameTableSize.Medium; }
             set
             {
-                if (_model.GameTableSize == GameTableSize.Medium)
+                if (_model.GameTableSize == RoboRun.Model.GameTableSize.Medium)
                     return;
 
-                _model.GameTableSize = GameTableSize.Medium;
+                _model.GameTableSize = RoboRun.Model.GameTableSize.Medium;
                 OnPropertyChanged("IsGameSmall");
                 OnPropertyChanged("IsGameMedium");
                 OnPropertyChanged("IsGameBig");
@@ -62,13 +62,13 @@ namespace RoboRun.ViewModel
 
         public bool IsGameBig
         {
-            get { return _model.GameTableSize == GameTableSize.Big; }
+            get { return _model.GameTableSize == RoboRun.Model.GameTableSize.Big; }
             set
             {
-                if (_model.GameTableSize == GameTableSize.Big)
+                if (_model.GameTableSize == RoboRun.Model.GameTableSize.Big)
                     return;
 
-                _model.GameTableSize = GameTableSize.Big;
+                _model.GameTableSize = RoboRun.Model.GameTableSize.Big;
                 OnPropertyChanged("IsGameSmall");
                 OnPropertyChanged("IsGameMedium");
                 OnPropertyChanged("IsGameBig");

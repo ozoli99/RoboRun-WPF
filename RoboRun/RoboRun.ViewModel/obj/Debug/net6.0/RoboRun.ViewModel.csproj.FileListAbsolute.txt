@@ -1,0 +1,17 @@
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\bin\Debug\net6.0\RoboRun.ViewModel.deps.json
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\bin\Debug\net6.0\RoboRun.ViewModel.dll
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\bin\Debug\net6.0\RoboRun.ViewModel.pdb
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\bin\Debug\net6.0\RoboRun.Model.dll
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\bin\Debug\net6.0\RoboRun.Persistence.dll
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\bin\Debug\net6.0\RoboRun.Model.pdb
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\bin\Debug\net6.0\RoboRun.Persistence.pdb
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\obj\Debug\net6.0\RoboRun.ViewModel.csproj.AssemblyReference.cache
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\obj\Debug\net6.0\RoboRun.ViewModel.GeneratedMSBuildEditorConfig.editorconfig
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\obj\Debug\net6.0\RoboRun.ViewModel.AssemblyInfoInputs.cache
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\obj\Debug\net6.0\RoboRun.ViewModel.AssemblyInfo.cs
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\obj\Debug\net6.0\RoboRun.ViewModel.csproj.CoreCompileInputs.cache
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\obj\Debug\net6.0\RoboRun.ViewModel.csproj.CopyComplete
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\obj\Debug\net6.0\RoboRun.ViewModel.dll
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\obj\Debug\net6.0\refint\RoboRun.ViewModel.dll
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\obj\Debug\net6.0\RoboRun.ViewModel.pdb
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.ViewModel\obj\Debug\net6.0\ref\RoboRun.ViewModel.dll
