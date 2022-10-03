@@ -139,9 +139,36 @@ namespace RoboRun.View
             }
         }
 
-        private void ViewModel_SaveGame(object? sender, EventArgs e)
+        private async void ViewModel_SaveGame(object? sender, EventArgs e)
         {
+            bool restartTimers = _timer.IsEnabled;
 
+            _timer.Stop();
+            _robotTimer.Stop();
+
+            try
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Title = "Saving RoboRun table";
+                saveFileDialog.Filter = "RoboRun table (*.rrt)|*.rrt";
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    await _model.SaveGameAsync(saveFileDialog.FileName);
+
+                    _timer.Start();
+                    _robotTimer.Start();
+                }
+            }
+            catch (RoboRunDataException)
+            {
+                MessageBox.Show("Error occurred during save!" + Environment.NewLine + "Wrong path or directory has no writing access.", "RoboRun Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            if (restartTimers)
+            {
+                _timer.Start();
+                _robotTimer.Start();
+            }
         }
 
         private void ViewModel_ExitGame(object? sender, EventArgs e)
