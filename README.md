@@ -65,12 +65,12 @@ található mágnes alá). Szintén dialógusablakkal végezzük el a mentést, 
 
 ## Tervezés
 ### Programszerkezet
-- A programot MVVM architektúrában valósítjuk meg, ennek megfelelően RoboRun.View, RoboRun.Model, RoboRun.ViewModel és RoboRun.Persistence
-névtereket valósítunk meg az alkalmazáson belül. A program környezetét az alkalmazás osztály (App) végzi, amely példányosítja a modellt,
+- A programot MVVM architektúrában valósítjuk meg, ennek megfelelően **RoboRun.View**, **RoboRun.Model**, **RoboRun.ViewModel** és **RoboRun.Persistence**
+névtereket valósítunk meg az alkalmazáson belül. A program környezetét az alkalmazás osztály (**App**) végzi, amely példányosítja a modellt,
 a nézetmodellt és a nézetet, biztosítja a kommunikációt, valamint felügyeli az adatkezelést.
 Továbbá a rétegeket külön projektként adjuk hozzá az újrafelhasználhatóság érdekében.
 
-![Application package diagram](https://github.com/ozoli99/RoboRun/blob/main/Media/ApplicationPackageDiagram.jpg)
+![Application package diagram](https://github.com/ozoli99/RoboRun-WPF/blob/main/Media/PackageDiagram.jpg)
 
 ### Perzisztencia
 - Az adatkezelés feladata a RoboRun táblával kapcsolatos információk tárolása, valamint a betöltés/mentés biztosítása.
@@ -91,6 +91,8 @@ azaz a tábla méretének megfelelő számú sor következik ugyanennyi számmal
 a mező zároltságának megfelelően. Ezután a robot adatai következnek egy sorban, majd még egy sorban a falak száma. 
 Az utóbbi számnak megfelelő mennyiségű sorban pedig a falak adatai következnek.
 
+![Persistence class diagram](https://github.com/ozoli99/RoboRun-WPF/blob/main/Media/PersistenceClassDiagram.jpg)
+
 ### Modell
 - A modell lényegi részét a **RoboRunModel** osztály valósítja meg, amely szabályozza a tábla tevékenységeit, 
 valamint a játék egyéb paramétereit, úgymint az idő (**_gameTime**). A típus lehetőséget ad új játék kezdésére (**NewGame**),
@@ -104,17 +106,34 @@ betöltésre (**LoadAsync**) és mentésre (**SaveAsync**).
 - A játéktábla méretét a **GameTableSize** felsorolási típuson át kezeljük, és a **RoboRunModel** osztályban konstansok 
 segítségével tároljuk az egyes méretek paramétereit.
 
-### Nézet
-- A nézetet a **GameForm** osztály biztosítja, amely tárolja a modell egy példányát (**_model**),
-valamint az adatelérés konkrét példányát (**_dataAccess**).
-- A játéktáblát egy dinamikusan létrehozott gombmező (**_buttonGrid**) reprezentálja. 
-A felületen létrehozzuk a megfelelő menüpontokat, illetve státuszsort, valamint dialógusablakokat, 
-és a hozzájuk tartozó eseménykezelőket. A játéktábla generálását (**GenerateGameTable**), 
-illetve az értékek beállítását (**SetupGameTable**) külön metódusok végzik.
-- A játék időbeli kezelését egy időzítő végzi (**_timer**), ahogy robot mozgását is ez vezérli (**_robotTimer**).
-Ezeket mindig aktiváljuk a játék során, illetve inaktiváljuk, amennyiben bizonyos menüfunkciók futnak.
+![Model class diagram](https://github.com/ozoli99/RoboRun-WPF/blob/main/Media/ModelClassDiagram.jpg)
 
-![Class diagram](https://github.com/ozoli99/RoboRun/blob/main/Media/ClassDiagram.jpg)
+### Nézetmodell
+- A nézetmodell megvalósításához felhasználunk egy általános utasítás (**DelegateCommand**), valamint egy ős változásjelző
+(**ViewModelBase**) osztályt.
+- A nézetmodell feladatait a **RoboRunViewModel** osztály látja el, amely parancsokat biztosít az új játék kezdéséhez, játék
+betöltéséhez, mentéséhez, kilépéshez, valamint a játék szüneteltetéséhez. A parancsokhoz eseményeket kötünk, amelyek a parancs
+lefutását jelzik a vezérlőnek. A nézetmodell tárolja a modell egy hivatkozását (**_model**), de csupán információkat kér le tőle,
+illetve a játéktábla méretét szabályozza. Direkt nem avatkozik a játék futtatásába.
+- A játékmező számára egy külön mezőt biztosítunk (**RoboRunTableField**), amely eltárolja a pozíciót, hogy fal, robot, összedőlt fal,
+Home mező vagy sima terület az adott mező, valamint a lépés parancsát (**StepCommand**). A mezőket egy felügyelt gyűjteménybe helyezzük
+a nézetmodellben (**Fields**).
+
+![ViewModel class diagram](https://github.com/ozoli99/RoboRun-WPF/blob/main/Media/ViewModelClassDiagram.jpg)
+
+### Nézet
+- A nézet csak egy képernyőt tartalmaz, a **MainWindow** osztályt. A nézet egy rácsban tárolja a játékmezőt, a menüt és
+a státuszsort. A játékmező egy **ItemsControl** vezérlő, ahol dinamikusan felépítünk egy rácsot (**UniformGrid**),
+amely gombokból áll. Minden adatot adatkötéssel kapcsolunk a felülethez, továbbá azon keresztül szabályozzuk a gombok hátterét is.
+- A fájlnév bekérését betöltéskor és mentéskor, valamint a figyelmeztető üzenetek megjelenését beépített dialógusablakok
+segítségével végezzük.
+
+### Környezet
+- Az **App** osztály feladata az egyes rétegek példányosítása (**App_Startup**), összekötése, a nézetmodell, valamint a modell
+eseményeinek lekezelése, és ezáltal a játék, az adatkezelés, valamint a nézetek szabályozása.
+- A játék léptetéséhez tárol két időzítőt is (**_timer**, **_robotTimer**), amelyeknek állítását is szabályozza az egyes funkciók hatására.
+
+![App class diagram](https://github.com/ozoli99/RoboRun-WPF/blob/main/Media/AppClassDiagram.jpg)
 
 ## Tesztelés
 - A modell funkcionalitása egységtesztek segítségével lett ellenőrizve a **TestModel** osztályban.
