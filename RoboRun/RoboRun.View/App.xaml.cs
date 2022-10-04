@@ -103,10 +103,9 @@ namespace RoboRun.View
 
         private void ViewModel_NewGame(object? sender, EventArgs e)
         {
-            _timer.Stop();
-            _robotTimer.Stop();
-
             //_model.NewGame();
+            _timer.Start();
+            _robotTimer.Start();
         }
 
         private async void ViewModel_LoadGame(object? sender, EventArgs e)
@@ -184,7 +183,10 @@ namespace RoboRun.View
 
         private void Model_GameWin(object? sender, RoboRunEventArgs e)
         {
+            _timer.Stop();
+            _robotTimer.Stop();
 
+            MessageBox.Show("You Won!" + Environment.NewLine + "Time: " + TimeSpan.FromSeconds(e.ElapsedTime).ToString("g"), "RoboRun", MessageBoxButton.OK, MessageBoxImage.Asterisk);
         }
 
         #endregion

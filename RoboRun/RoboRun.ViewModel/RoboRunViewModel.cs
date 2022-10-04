@@ -115,7 +115,7 @@ namespace RoboRun.ViewModel
                         IsRobot = _model.GameTable.IsRobot(i, j),
                         IsHome = _model.GameTable.IsHome(i, j),
                         IsFloor = !_model.GameTable.IsRobot(i, j) && !_model.GameTable.HasWall(i, j) && !_model.GameTable.IsHome(i, j),
-                        StepCommand = new DelegateCommand(param => StepGame(int.Parse((string)param)))
+                        StepCommand = new DelegateCommand(param => StepGame(Convert.ToInt32(param)))
                     });
                 }
             }
