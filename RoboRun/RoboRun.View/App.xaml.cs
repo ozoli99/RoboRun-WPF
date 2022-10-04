@@ -39,6 +39,7 @@ namespace RoboRun.View
         {
             _model = new RoboRunModel(new RoboRunFileDataAccess());
             _model.GameWin += new EventHandler<RoboRunEventArgs>(Model_GameWin);
+            _model.GameTimePaused += new EventHandler<RoboRunEventArgs>(Model_GameTimePaused);
             // TODO: randomize starting
             _model.NewGame(0, 0, Direction.Up);
 
@@ -187,6 +188,11 @@ namespace RoboRun.View
             _robotTimer.Stop();
 
             MessageBox.Show("You Won!" + Environment.NewLine + "Time: " + TimeSpan.FromSeconds(e.ElapsedTime).ToString("g"), "RoboRun", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+        }
+
+        private void Model_GameTimePaused(object? sender, RoboRunEventArgs e)
+        {
+
         }
 
         #endregion
