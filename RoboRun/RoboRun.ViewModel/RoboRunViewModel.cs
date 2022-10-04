@@ -92,8 +92,6 @@ namespace RoboRun.ViewModel
         {
             _model = model;
             _model.GameTimeAdvanced += new EventHandler<RoboRunEventArgs>(Model_GameTimeAdvanced);
-            _model.GameTimePaused += new EventHandler<RoboRunEventArgs>(Model_GameTimePaused);
-            _model.GameWin += new EventHandler<RoboRunEventArgs>(Model_GameWin);
             _model.RobotMoved += new EventHandler(Model_RobotMoved);
 
             NewGameCommand = new DelegateCommand(param => OnNewGame());
@@ -128,16 +126,6 @@ namespace RoboRun.ViewModel
         private void Model_GameTimeAdvanced(object? sender, RoboRunEventArgs e)
         {
             OnPropertyChanged("GameTime");
-        }
-
-        private void Model_GameTimePaused(object? sender, RoboRunEventArgs e)
-        {
-
-        }
-
-        private void Model_GameWin(object? sender, RoboRunEventArgs e)
-        {
-
         }
 
         private void Model_RobotMoved(object? sender, EventArgs e)
