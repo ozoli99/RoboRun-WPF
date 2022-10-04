@@ -14,10 +14,6 @@
 
         #region Properties
 
-        public int X { get; set; }
-
-        public int Y { get; set; }
-
         public bool HasWall
         { 
             get { return _hasWall; }
@@ -82,6 +78,12 @@
                 }
             }
         }
+
+        public int X { get; set; }
+
+        public int Y { get; set; }
+
+        public int Number { get; set; }
 
         public DelegateCommand StepCommand { get; set; }
 
