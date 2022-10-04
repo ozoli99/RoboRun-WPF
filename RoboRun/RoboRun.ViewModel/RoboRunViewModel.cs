@@ -130,7 +130,7 @@ namespace RoboRun.ViewModel
 
         private void Model_RobotMoved(object? sender, EventArgs e)
         {
-
+            RefreshFieldsState();
         }
 
         #endregion
@@ -139,16 +139,22 @@ namespace RoboRun.ViewModel
 
         private void StepGame(int index)
         {
-            RoboRunTableField field = Fields[index];
+            RoboRunTableField fieldStep = Fields[index];
 
-            _model.Step(field.X, field.Y);
+            _model.Step(fieldStep.X, fieldStep.Y);
+
+            RefreshFieldsState();
         }
 
-        private void RefreshTable()
+        private void RefreshFieldsState()
         {
             foreach (RoboRunTableField field in Fields)
             {
-
+                field.IsRobot = _model.GameTable.IsRobot(field.X, field.Y);
+                field.IsHome = _model.GameTable.IsHome(field.X, field.Y);
+                field.HasWall = _model.GameTable.HasWall(field.X, field.Y);
+                field.HasCollapsedWall = _model.GameTable.HasWall(field.X, field.Y) ? _model.GameTable.GetWall(field.X, field.Y).Collapsed : false;
+                field.IsFloor = (!field.IsRobot && !field.IsHome && !field.HasWall && !field.HasCollapsedWall);
             }
         }
 
