@@ -59,5 +59,65 @@ namespace RoboRun.View {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] floor {
+            get {
+                object obj = ResourceManager.GetObject("floor", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] home {
+            get {
+                object obj = ResourceManager.GetObject("home", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] robot {
+            get {
+                object obj = ResourceManager.GetObject("robot", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] wall {
+            get {
+                object obj = ResourceManager.GetObject("wall", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] wallCollapsed {
+            get {
+                object obj = ResourceManager.GetObject("wallCollapsed", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] wallCollapsedRobot {
+            get {
+                object obj = ResourceManager.GetObject("wallCollapsedRobot", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

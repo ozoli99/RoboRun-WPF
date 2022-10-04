@@ -156,6 +156,14 @@ namespace RoboRun.ViewModel
             _model.Step(field.X, field.Y);
         }
 
+        private void RefreshTable()
+        {
+            foreach (RoboRunTableField field in Fields)
+            {
+
+            }
+        }
+
         #endregion
 
         #region Event methods
