@@ -2,14 +2,14 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="RoboRun" Height="450" Width="400" MinWidth="400" MinHeight="450">
-    <Window.Resources>
+    <!--<Window.Resources>
         <Image x:Key="Floor" Source="pack://application:,,,/Resources/floor.png" Height="64" Width="64" />
         <Image x:Key="Home" Source="pack://application:,,,/Resources/home.png" Height="64" Width="64" />
         <Image x:Key="Wall" Source="pack://application:,,,/Resources/wall.png" Height="64" Width="64" />
         <Image x:Key="Robot" Source="pack://application:,,,/Resources/robot.png" Height="64" Width="64" />
         <Image x:Key="CollapsedWall" Source="pack://application:,,,/Resources/wallCollapsed.png" Height="64" Width="64" />
         <Image x:Key="CollapsedWallRobot" Source="pack://application:,,,/Resources/wallCollapsedRobot.png" Height="64" Width="64" />
-    </Window.Resources>
+    </Window.Resources>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -46,19 +46,19 @@
                                 <Style TargetType="{x:Type Image}">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding IsRobot}" Value="True">
-                                            <Setter Property="Source" Value="pack://application:,,,/Resources/robot.png" />
+                                            <Setter Property="Source" Value="E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\Resources\robot.png" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding IsFloor}" Value="True">
-                                            <Setter Property="Source" Value="pack://application:,,,/Resources/floor.png" />
+                                            <Setter Property="Source" Value="E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\Resources\floor.png" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding IsHome}" Value="True">
-                                            <Setter Property="Source" Value="pack://application:,,,/Resources/home.png" />
+                                            <Setter Property="Source" Value="E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\Resources\home.png" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding HasWall}" Value="True">
-                                            <Setter Property="Source" Value="pack://application:,,,/Resources/wall.png"/>
+                                            <Setter Property="Source" Value="E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\Resources\wall.png"/>
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding HasCollapsedWall}" Value="True">
-                                            <Setter Property="Source" Value="pack://application:,,,/Resources/wallCollapsed.png"/>
+                                            <Setter Property="Source" Value="E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\Resources\wallCollapsed.png"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
