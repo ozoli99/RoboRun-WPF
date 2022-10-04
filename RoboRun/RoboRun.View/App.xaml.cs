@@ -40,8 +40,7 @@ namespace RoboRun.View
             _model = new RoboRunModel(new RoboRunFileDataAccess());
             _model.GameWin += new EventHandler<RoboRunEventArgs>(Model_GameWin);
             _model.GameTimePaused += new EventHandler<RoboRunEventArgs>(Model_GameTimePaused);
-            // TODO: randomize starting
-            _model.NewGame(0, 0, Direction.Up);
+            Model_RandomNewGame();
 
             _viewModel = new RoboRunViewModel(_model);
             _viewModel.NewGame += new EventHandler(ViewModel_NewGame);
@@ -104,7 +103,7 @@ namespace RoboRun.View
 
         private void ViewModel_NewGame(object? sender, EventArgs e)
         {
-            //_model.NewGame();
+            Model_RandomNewGame();
             _timer.Start();
             _robotTimer.Start();
         }
@@ -193,6 +192,26 @@ namespace RoboRun.View
         private void Model_GameTimePaused(object? sender, RoboRunEventArgs e)
         {
 
+        }
+
+        #endregion
+
+        #region Private methods
+
+        private void Model_RandomNewGame()
+        {
+            Random random = new Random();
+            int x, y;
+            x = random.Next(_model.GameTable.Size);
+            y = random.Next(_model.GameTable.Size);
+            while (x == _model.GameTable.Size / 2 && y == _model.GameTable.Size / 2)
+            {
+                x = random.Next(_model.GameTable.Size);
+                y = random.Next(_model.GameTable.Size);
+            }
+            Array values = Enum.GetValues(typeof(Direction));
+            Direction randomDirection = (Direction)values.GetValue(random.Next(values.Length));
+            _model.NewGame(x, y, randomDirection);
         }
 
         #endregion
