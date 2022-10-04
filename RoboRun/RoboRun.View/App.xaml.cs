@@ -105,6 +105,7 @@ namespace RoboRun.View
         private void ViewModel_NewGame(object? sender, EventArgs e)
         {
             Model_RandomNewGame();
+            
             _timer.Start();
             _robotTimer.Start();
         }
@@ -193,7 +194,13 @@ namespace RoboRun.View
             _timer.Stop();
             _robotTimer.Stop();
 
-            MessageBox.Show("You Won!" + Environment.NewLine + "Time: " + TimeSpan.FromSeconds(e.ElapsedTime).ToString("g"), "RoboRun", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            if (MessageBox.Show("You Won!" + Environment.NewLine + "Time: " + TimeSpan.FromSeconds(e.ElapsedTime).ToString("g"), "RoboRun", MessageBoxButton.OK, MessageBoxImage.Asterisk) == MessageBoxResult.OK)
+            {
+                Model_RandomNewGame();
+
+                _timer.Start();
+                _robotTimer.Start();
+            }
         }
 
         private void Model_GameTimePaused(object? sender, RoboRunEventArgs e)
