@@ -2,14 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="RoboRun" Height="450" Width="400" MinWidth="400" MinHeight="450">
-    <!--<Window.Resources>
-        <Image x:Key="Floor" Source="pack://application:,,,/Resources/floor.png" Height="64" Width="64" />
-        <Image x:Key="Home" Source="pack://application:,,,/Resources/home.png" Height="64" Width="64" />
-        <Image x:Key="Wall" Source="pack://application:,,,/Resources/wall.png" Height="64" Width="64" />
-        <Image x:Key="Robot" Source="pack://application:,,,/Resources/robot.png" Height="64" Width="64" />
-        <Image x:Key="CollapsedWall" Source="pack://application:,,,/Resources/wallCollapsed.png" Height="64" Width="64" />
-        <Image x:Key="CollapsedWallRobot" Source="pack://application:,,,/Resources/wallCollapsedRobot.png" Height="64" Width="64" />
-    </Window.Resources>-->
+    <Window.InputBindings>
+        <KeyBinding Key="Space" Command="{Binding PauseGameCommand}" />
+    </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

@@ -47,6 +47,7 @@ namespace RoboRun.View
             _viewModel.LoadGame += new EventHandler(ViewModel_LoadGame);
             _viewModel.SaveGame += new EventHandler(ViewModel_SaveGame);
             _viewModel.ExitGame += new EventHandler(ViewModel_ExitGame);
+            _viewModel.PauseGame += new EventHandler(ViewModel_PauseGame);
             _viewModel.GameTableSizeChanged += new EventHandler(ViewModel_GameTableSizeChanged);
 
             _view = new MainWindow();
@@ -179,6 +180,11 @@ namespace RoboRun.View
             _view.Close();
         }
 
+        private void ViewModel_PauseGame(object? sender, EventArgs e)
+        {
+            _model.PauseGame();
+        }
+
         private void ViewModel_GameTableSizeChanged(object? sender, EventArgs e)
         {
             Model_RandomNewGame();
@@ -205,7 +211,16 @@ namespace RoboRun.View
 
         private void Model_GameTimePaused(object? sender, RoboRunEventArgs e)
         {
-
+            if (_timer.IsEnabled)
+            {
+                _timer.Stop();
+                _robotTimer.Stop();
+            }
+            else
+            {
+                _timer.Start();
+                _robotTimer.Start();
+            }
         }
 
         #endregion

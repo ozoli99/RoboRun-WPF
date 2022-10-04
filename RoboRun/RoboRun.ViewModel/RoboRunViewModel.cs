@@ -24,6 +24,8 @@ namespace RoboRun.ViewModel
 
         public DelegateCommand ExitGameCommand { get; private set; }
 
+        public DelegateCommand PauseGameCommand { get; private set; }
+
         public ObservableCollection<RoboRunTableField> Fields { get; set; }
 
         public int GameTableSize
@@ -100,6 +102,7 @@ namespace RoboRun.ViewModel
         public event EventHandler? LoadGame;
         public event EventHandler? SaveGame;
         public event EventHandler? ExitGame;
+        public event EventHandler? PauseGame;
         public event EventHandler? GameTableSizeChanged;
 
         #endregion
@@ -116,6 +119,7 @@ namespace RoboRun.ViewModel
             LoadGameCommand = new DelegateCommand(param => LoadGame?.Invoke(this, EventArgs.Empty));
             SaveGameCommand = new DelegateCommand(param => SaveGame?.Invoke(this, EventArgs.Empty));
             ExitGameCommand = new DelegateCommand(param => ExitGame?.Invoke(this, EventArgs.Empty));
+            PauseGameCommand = new DelegateCommand(param => PauseGame?.Invoke(this, EventArgs.Empty));
 
             Fields = new ObservableCollection<RoboRunTableField>();
             for (int i = 0; i < _model.GameTable.Size; i++)
