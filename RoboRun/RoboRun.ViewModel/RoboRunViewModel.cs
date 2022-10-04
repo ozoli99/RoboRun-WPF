@@ -26,7 +26,18 @@ namespace RoboRun.ViewModel
 
         public ObservableCollection<RoboRunTableField> Fields { get; set; }
 
-        public int GameTableSize { get { return _model.GameTable.Size; } }
+        public int GameTableSize
+        { 
+            get { return (int)_model.GameTableSize; }
+            set
+            {
+                if ((int)_model.GameTableSize != value)
+                {
+                    _model.GameTableSize = (GameTableSize)value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public string GameTime { get { return TimeSpan.FromSeconds(_model.GameTime).ToString("g"); } }
 
@@ -38,7 +49,9 @@ namespace RoboRun.ViewModel
                 if (_model.GameTableSize == RoboRun.Model.GameTableSize.Small)
                     return;
 
-                _model.GameTableSize = RoboRun.Model.GameTableSize.Small;
+                GameTableSize = (int)RoboRun.Model.GameTableSize.Small;
+                GameTableSizeChanged?.Invoke(this, EventArgs.Empty);
+
                 OnPropertyChanged("IsGameSmall");
                 OnPropertyChanged("IsGameMedium");
                 OnPropertyChanged("IsGameBig");
@@ -53,7 +66,9 @@ namespace RoboRun.ViewModel
                 if (_model.GameTableSize == RoboRun.Model.GameTableSize.Medium)
                     return;
 
-                _model.GameTableSize = RoboRun.Model.GameTableSize.Medium;
+                GameTableSize = (int)RoboRun.Model.GameTableSize.Medium;
+                GameTableSizeChanged?.Invoke(this, EventArgs.Empty);
+
                 OnPropertyChanged("IsGameSmall");
                 OnPropertyChanged("IsGameMedium");
                 OnPropertyChanged("IsGameBig");
@@ -68,7 +83,9 @@ namespace RoboRun.ViewModel
                 if (_model.GameTableSize == RoboRun.Model.GameTableSize.Big)
                     return;
 
-                _model.GameTableSize = RoboRun.Model.GameTableSize.Big;
+                GameTableSize = (int)RoboRun.Model.GameTableSize.Big;
+                GameTableSizeChanged?.Invoke(this, EventArgs.Empty);
+
                 OnPropertyChanged("IsGameSmall");
                 OnPropertyChanged("IsGameMedium");
                 OnPropertyChanged("IsGameBig");
@@ -83,6 +100,7 @@ namespace RoboRun.ViewModel
         public event EventHandler? LoadGame;
         public event EventHandler? SaveGame;
         public event EventHandler? ExitGame;
+        public event EventHandler? GameTableSizeChanged;
 
         #endregion
 
@@ -94,10 +112,10 @@ namespace RoboRun.ViewModel
             _model.GameTimeAdvanced += new EventHandler<RoboRunEventArgs>(Model_GameTimeAdvanced);
             _model.RobotMoved += new EventHandler(Model_RobotMoved);
 
-            NewGameCommand = new DelegateCommand(param => OnNewGame());
-            LoadGameCommand = new DelegateCommand(param => OnLoadGame());
-            SaveGameCommand = new DelegateCommand(param => OnSaveGame());
-            ExitGameCommand = new DelegateCommand(param => OnExitGame());
+            NewGameCommand = new DelegateCommand(param => NewGame?.Invoke(this, EventArgs.Empty));
+            LoadGameCommand = new DelegateCommand(param => LoadGame?.Invoke(this, EventArgs.Empty));
+            SaveGameCommand = new DelegateCommand(param => SaveGame?.Invoke(this, EventArgs.Empty));
+            ExitGameCommand = new DelegateCommand(param => ExitGame?.Invoke(this, EventArgs.Empty));
 
             Fields = new ObservableCollection<RoboRunTableField>();
             for (int i = 0; i < _model.GameTable.Size; i++)
@@ -110,6 +128,7 @@ namespace RoboRun.ViewModel
                         Y = j,
                         HasWall = _model.GameTable.HasWall(i, j),
                         HasCollapsedWall = _model.GameTable.HasWall(i, j) ? _model.GameTable.GetWall(i, j).Collapsed : false,
+                        HasCollapsedWallRobot = _model.GameTable.HasWall(i, j) ? (_model.GameTable.GetWall(i, j).Collapsed && _model.GameTable.IsRobot(i, j)) : false,
                         IsRobot = _model.GameTable.IsRobot(i, j),
                         IsHome = _model.GameTable.IsHome(i, j),
                         IsFloor = !_model.GameTable.IsRobot(i, j) && !_model.GameTable.HasWall(i, j) && !_model.GameTable.IsHome(i, j),
@@ -136,6 +155,34 @@ namespace RoboRun.ViewModel
 
         #endregion
 
+        #region Public methods
+
+        public void GenerateNewFields()
+        {
+            Fields.Clear();
+            for (int i = 0; i < _model.GameTable.Size; i++)
+            {
+                for (int j = 0; j < _model.GameTable.Size; j++)
+                {
+                    Fields.Add(new RoboRunTableField
+                    {
+                        X = i,
+                        Y = j,
+                        HasWall = _model.GameTable.HasWall(i, j),
+                        HasCollapsedWall = _model.GameTable.HasWall(i, j) ? _model.GameTable.GetWall(i, j).Collapsed : false,
+                        HasCollapsedWallRobot = _model.GameTable.HasWall(i, j) ? (_model.GameTable.GetWall(i, j).Collapsed && _model.GameTable.IsRobot(i, j)) : false,
+                        IsRobot = _model.GameTable.IsRobot(i, j),
+                        IsHome = _model.GameTable.IsHome(i, j),
+                        IsFloor = !_model.GameTable.IsRobot(i, j) && !_model.GameTable.HasWall(i, j) && !_model.GameTable.IsHome(i, j),
+                        Number = i * _model.GameTable.Size + j,
+                        StepCommand = new DelegateCommand(param => StepGame(Convert.ToInt32(param)))
+                    });
+                }
+            }
+        }
+
+        #endregion
+
         #region Private methods
 
         private void StepGame(int index)
@@ -155,32 +202,9 @@ namespace RoboRun.ViewModel
                 field.IsHome = _model.GameTable.IsHome(field.X, field.Y);
                 field.HasWall = _model.GameTable.HasWall(field.X, field.Y);
                 field.HasCollapsedWall = _model.GameTable.HasWall(field.X, field.Y) ? _model.GameTable.GetWall(field.X, field.Y).Collapsed : false;
+                field.HasCollapsedWallRobot = (field.HasCollapsedWallRobot && field.IsRobot);
                 field.IsFloor = (!field.IsRobot && !field.IsHome && !field.HasWall && !field.HasCollapsedWall);
             }
-        }
-
-        #endregion
-
-        #region Event methods
-
-        private void OnNewGame()
-        {
-            NewGame?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void OnLoadGame()
-        {
-            LoadGame?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void OnSaveGame()
-        {
-            SaveGame?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void OnExitGame()
-        {
-            ExitGame?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion

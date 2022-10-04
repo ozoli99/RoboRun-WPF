@@ -47,6 +47,7 @@ namespace RoboRun.View
             _viewModel.LoadGame += new EventHandler(ViewModel_LoadGame);
             _viewModel.SaveGame += new EventHandler(ViewModel_SaveGame);
             _viewModel.ExitGame += new EventHandler(ViewModel_ExitGame);
+            _viewModel.GameTableSizeChanged += new EventHandler(ViewModel_GameTableSizeChanged);
 
             _view = new MainWindow();
             _view.DataContext = _viewModel;
@@ -57,7 +58,7 @@ namespace RoboRun.View
             _timer.Interval = TimeSpan.FromMilliseconds(1000);
             _timer.Tick += new EventHandler(Timer_Tick);
             _robotTimer = new DispatcherTimer();
-            _robotTimer.Interval = TimeSpan.FromMilliseconds(150);
+            _robotTimer.Interval = TimeSpan.FromMilliseconds(100);
             _robotTimer.Tick += new EventHandler(RobotTimer_Tick);
 
             _timer.Start();
@@ -177,6 +178,12 @@ namespace RoboRun.View
             _view.Close();
         }
 
+        private void ViewModel_GameTableSizeChanged(object? sender, EventArgs e)
+        {
+            Model_RandomNewGame();
+            _viewModel.GenerateNewFields();
+        }
+
         #endregion
 
         #region Model event handlers
@@ -202,12 +209,12 @@ namespace RoboRun.View
         {
             Random random = new Random();
             int x, y;
-            x = random.Next(_model.GameTable.Size);
-            y = random.Next(_model.GameTable.Size);
-            while (x == _model.GameTable.Size / 2 && y == _model.GameTable.Size / 2)
+            x = random.Next((int)_model.GameTableSize);
+            y = random.Next((int)_model.GameTableSize);
+            while (x == (int)_model.GameTableSize / 2 && y == (int)_model.GameTableSize / 2)
             {
-                x = random.Next(_model.GameTable.Size);
-                y = random.Next(_model.GameTable.Size);
+                x = random.Next((int)_model.GameTableSize);
+                y = random.Next((int)_model.GameTableSize);
             }
             Array values = Enum.GetValues(typeof(Direction));
             Direction randomDirection = (Direction)values.GetValue(random.Next(values.Length));

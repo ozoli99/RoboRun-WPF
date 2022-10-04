@@ -6,6 +6,7 @@
 
         private bool _hasWall;
         private bool _hasCollapsedWall;
+        private bool _hasCollapsedWallRobot;
         private bool _isRobot;
         private bool _isHome;
         private bool _isFloor;
@@ -35,6 +36,19 @@
                 if (_hasCollapsedWall != value)
                 {
                     _hasCollapsedWall = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public bool HasCollapsedWallRobot
+        {
+            get { return _hasCollapsedWallRobot; }
+            set
+            {
+                if (_hasCollapsedWallRobot != value)
+                {
+                    _hasCollapsedWallRobot = value;
                     OnPropertyChanged();
                 }
             }

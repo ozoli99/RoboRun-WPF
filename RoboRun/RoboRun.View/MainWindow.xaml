@@ -60,6 +60,9 @@
                                         <DataTrigger Binding="{Binding HasCollapsedWall}" Value="True">
                                             <Setter Property="Source" Value="E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\Resources\wallCollapsed.png"/>
                                         </DataTrigger>
+                                        <DataTrigger Binding="{Binding HasCollapsedWallRobot}" Value="True">
+                                            <Setter Property="Source" Value="E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\Resources\wallCollapsedRobot.png"/>
+                                        </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Image.Style>
