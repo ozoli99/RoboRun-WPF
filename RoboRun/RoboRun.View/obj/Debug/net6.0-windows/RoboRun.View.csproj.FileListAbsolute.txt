@@ -15,6 +15,8 @@ E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\Robo
 E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\obj\Debug\net6.0-windows\App.g.cs
 E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\obj\Debug\net6.0-windows\RoboRun.View_MarkupCompile.cache
 E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\obj\Debug\net6.0-windows\RoboRun.View.g.resources
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\obj\Debug\net6.0-windows\RoboRun.View.Resource.resources
+E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\obj\Debug\net6.0-windows\RoboRun.View.csproj.GenerateResource.cache
 E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\obj\Debug\net6.0-windows\RoboRun.View.GeneratedMSBuildEditorConfig.editorconfig
 E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\obj\Debug\net6.0-windows\RoboRun.View.AssemblyInfoInputs.cache
 E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\obj\Debug\net6.0-windows\RoboRun.View.AssemblyInfo.cs
@@ -25,5 +27,3 @@ E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\Robo
 E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\obj\Debug\net6.0-windows\RoboRun.View.pdb
 E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\obj\Debug\net6.0-windows\RoboRun.View.genruntimeconfig.cache
 E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\obj\Debug\net6.0-windows\ref\RoboRun.View.dll
-E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\obj\Debug\net6.0-windows\RoboRun.View.Resource.resources
-E:\ELTE\V. Felev\Esemenyvezerelt alkalmazasok\Beadandok\RoboRun-WPF\RoboRun\RoboRun.View\obj\Debug\net6.0-windows\RoboRun.View.csproj.GenerateResource.cache
