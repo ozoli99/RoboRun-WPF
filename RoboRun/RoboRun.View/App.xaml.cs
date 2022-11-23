@@ -127,6 +127,9 @@ namespace RoboRun.View
                 {
                     await _model.LoadGameAsync(openFileDialog.FileName);
 
+                    _viewModel.GameTableSize = _model.GameTable.Size;
+                    _viewModel.GenerateNewFields();
+
                     _timer.Start();
                     _robotTimer.Start();
                 }

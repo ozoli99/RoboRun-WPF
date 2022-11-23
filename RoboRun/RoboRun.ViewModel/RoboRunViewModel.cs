@@ -163,8 +163,6 @@ namespace RoboRun.ViewModel
 
         public void GenerateNewFields()
         {
-            // TODO: Pause the game before loading and change GameTableSize
-            OnPropertyChanged("GameTableSize");
             Fields.Clear();
             for (int i = 0; i < _model.GameTable.Size; i++)
             {
